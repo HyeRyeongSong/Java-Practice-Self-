@@ -1,47 +1,32 @@
 /**
  * Created by HyeRyeongSong on 2017. 1. 15..
  */
-abstract class Parent
+interface Parent1
 {
     public abstract void On();
 
     public abstract void Off();
-
-    public void Up(String string)
-    {
-        System.out.println(string + " Up");
-    }
-
-    public void Down(String string)
-    {
-        System.out.println(string + " Down");
-    }
-
 }
 
-class Child extends Parent
+interface Parent2
 {
-    String sName;
-    public Child(String sName){
-        this.sName = sName;
-    }
-    public void On()
-    {
-        System.out.println(this.sName + " On");
-    }
+    public abstract void Up();
 
-    public void Off()
-    {
-        System.out.println(this.sName + " Off");
-    }
+    public abstract void Down();
 }
 
-class Child2 extends Parent{
+class TV implements Parent1, Parent2{
+    public void Up(){
+        System.out.println("Channel Up");
+    }
+    public void Down(){
+        System.out.println("Channel Down");
+    }
     public void On(){
-        System.out.println("Radio On");
+        System.out.println("Channel On");
     }
     public void Off(){
-        System.out.println("Radio Off");
+        System.out.println("Channel Off");
     }
 
 }
@@ -50,15 +35,10 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Child child = new Child("TV");
-        child.On();
-        child.Up("TV");
-        child.Down("TV");
-        child.Off();
-        Child2 child2 = new Child2();
-        child2.On();
-        child2.Up("Radio");
-        child2.Down("Radio");
-        child2.Off();
+        TV tv = new TV();
+        tv.On();
+        tv.Up();
+        tv.Down();
+        tv.Off();
     }
 }
